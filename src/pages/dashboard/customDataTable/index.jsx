@@ -30,15 +30,15 @@ const CustomDataTable = (props) => {
       // setSorting({ field: "", order: "" });
       computedComments =
         Object.keys(projects.default).length > 0 &&
-        Object.keys(projects.default).filter(
-          (comment) => comment.toLowerCase().includes(search.toLowerCase())
+        Object.values(projects.default).filter(
+          (comment) => comment.name.toLowerCase().includes(search.toLowerCase())
           // comment.email.toLowerCase().includes(search.toLowerCase())
         );
-      if (computedComments.length > 0) {
-        computedComments.forEach((item) => {
-          newProjects[item] = projects.default[item];
-        });
-      }
+      // if (computedComments.length > 0) {
+      //   computedComments.forEach((item) => {
+      //     newProjects[item] = projects.default[item];
+      //   });
+      // }
     }
     //Sorting projects
     else if (sorting.field !== "") {
@@ -70,13 +70,13 @@ const CustomDataTable = (props) => {
     console.log("line113", projects);
 
     //Current Page slice
-    return Object.keys(newProjects).length !== 0
-      ? Object.keys(newProjects).slice(
+    return computedComments.length !== 0
+      ? computedComments.slice(
           (currentPage - 1) * pageItem,
           (currentPage - 1) * pageItem + pageItem
         )
       : Object.keys(projects.default).length > 0
-      ? Object.keys(projects.default).slice(
+      ? Object.values(projects.default).slice(
           (currentPage - 1) * pageItem,
           (currentPage - 1) * pageItem + pageItem
         )
@@ -134,16 +134,19 @@ const CustomDataTable = (props) => {
               onSorting={(field, order) => setSorting({ field, order })}
             />
             <tbody>
-              {commentsData.map((projectID, index) => (
+              {commentsData.map((project, index) => (
                 <tr>
                   <th
                     scope="row"
-                    key={projectID}
+                    key={project.id}
                     // key={currentPage > 1 ? index + 1 + pageItem : index + 1}
                   >
-                    {projectID}
+                    {project.id}
                   </th>
-                  <td>{projects.default[projectID].name}</td>
+                  <td>
+                    {Object.keys(projects.default).length > 0 &&
+                      projects.default[project.id].name}
+                  </td>
                   <td>
                     <Form.Select
                       className="form-control"
@@ -152,14 +155,14 @@ const CustomDataTable = (props) => {
                       }}
                       value={
                         Object.keys(projects.default).length > 0
-                          ? Object.keys(projects.default[projectID].default)[0]
+                          ? Object.keys(projects.default[project.id].default)[0]
                           : ""
                       }
                     >
                       <option value="">Select Language</option>
                       {
                         // console.log(Object.keys(projects[comment]));
-                        Object.keys(projects.default[projectID].default).map(
+                        Object.keys(projects.default[project.id].default).map(
                           (langCode) => (
                             <option value={langCode}>{langCode}</option>
                           )
@@ -171,8 +174,8 @@ const CustomDataTable = (props) => {
                     <button
                       className="btn form-control"
                       onClick={() => {
-                        alert(projectID);
-                        editProjectData(projectID);
+                        alert(project.id);
+                        editProjectData(project.id);
                       }}
                     >
                       Edit
