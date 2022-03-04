@@ -6,7 +6,7 @@ import history from "./utils/constants";
 import { theme } from "./utils/themeconfig";
 import store from "./store/store";
 import AppEntry from "./pages/appEntry";
-import Home from "./pages/home";
+import Dashboard from "./pages/dashboard";
 import Contact from "./pages/contact";
 import PrivateRoute from "./routeModule/private";
 import PublicRoute from "./routeModule/public";
@@ -36,15 +36,16 @@ function App(props) {
             <PrivateRoute
               setThemeState={setThemeState}
               theme={themeState}
-              component={Home}
+              component={Dashboard}
               path="/"
               exact
             />
+
             <PrivateRoute
               setThemeState={setThemeState}
               theme={themeState}
-              component={Home}
-              path="/home"
+              component={Dashboard}
+              path="/dashboard"
               exact
             />
             <PrivateRoute

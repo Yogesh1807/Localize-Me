@@ -17,7 +17,7 @@ export function login() {
           delete: false,
         },
         modules: [
-          { name: "home", icon: "fa fa-home" },
+          { name: "dashboard", icon: "fa fa-home" },
           { name: "contact", icon: "fa fa-phone" },
         ],
       };

@@ -7,7 +7,7 @@ import { svgIcons } from "../utils/svgicon";
 function Sidebar(props) {
   const history = useHistory();
   let pageName = useLocation().pathname;
-  pageName = pageName === "/" ? "/home" : pageName;
+  pageName = pageName === "/" ? "/dashboard" : pageName;
   console.log("sidebar props", props, svgIcons, pageName);
   const { userData, setCollapse, collapse } = props;
   const { selectedTheme } = props.content.props;

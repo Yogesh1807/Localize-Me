@@ -1,18 +1,13 @@
 import React from "react";
-import Home from "../pages/home";
 import Contact from "../pages/home";
+import Dashboard from "../pages/dashboard";
 export const AppConfig = {
   access: {},
   modules: [],
   content: {
     default: {
       htmlContent: (data) => {
-        return <Home data={data} />;
-      },
-    },
-    home: {
-      htmlContent: (data) => {
-        return <Home data={data} />;
+        return <Dashboard data={data} />;
       },
     },
     contact: {
@@ -20,14 +15,9 @@ export const AppConfig = {
         return <Contact data={data} />;
       },
     },
-    component: {
-      htmlContent: (data) => {
-        return <div>Component</div>;
-      },
-    },
     dashboard: {
       htmlContent: (data) => {
-        return <div>Dashboard</div>;
+        return <Dashboard>Dashboard</Dashboard>;
       },
     },
   },
