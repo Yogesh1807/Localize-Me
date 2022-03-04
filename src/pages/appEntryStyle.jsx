@@ -91,4 +91,28 @@ export const AppEntryStyle = styled.div`
     color: ${(props) => props.selectedTheme.link.color};
     padding: 0;
   }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /* background: #f1f1f1; */
+    background: ${(props) => {
+      console.log("line222 props=>", props);
+      return props.selectedTheme.bgColor;
+    }};
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;

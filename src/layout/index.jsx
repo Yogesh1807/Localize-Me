@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { AppConfig } from "../utils/appConfig";
+import MainHeader from "./header";
 import Sidebar from "./sidebar";
 let tempData = {};
 
@@ -41,6 +42,7 @@ export const PageLayout = (props) => {
         setCollapse={setCollapse}
         userData={appData}
       />
+      {/* <MainHeader {...props} /> */}
       <PageContent collapse={collapse}>{props.content}</PageContent>
     </MainLayout>
   );
@@ -59,6 +61,7 @@ export const MainLayout = styled.div`
   background-color: aquamarine;
 `;
 export const PageContent = styled.div`
+  /* margin: 5% 0%; */
   float: right;
   width: ${(props) => (props.collapse ? "95%" : "80%")};
   -webkit-transition: 0.4s;
